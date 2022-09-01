@@ -77,6 +77,8 @@ If you are in Linux, using Ubuntu, you can create an script file called **instal
 
 <script src="https://gist.github.com/ruslanmv/511d96c2d9cc2dd3b68a67490bcf9aad.js"></script>
 
+
+
 This script is compatible with any EC2 instance with **Ubuntu 22.04 LSTM,** then just type `sh install_docker.sh` in the terminal.
 
 ![image-20220831205814471](assets/images/posts/README/image-20220831205814471.png)
