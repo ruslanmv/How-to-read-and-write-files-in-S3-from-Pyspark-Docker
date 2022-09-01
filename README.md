@@ -1,14 +1,6 @@
-
-
-
-
-
-
 # How to read and write files from S3 buckets with Pyspark in a Docker Container
 
 Hello everyone, today we are going  create a custom Docker Container with **JupyterLab**  with **Pyspark**  that will read files from **AWS S3**
-
-Moreover we are going to analyze some **Stocks prices** data of Google, Amazon and Tesla in a **S3** with **Pyspark.**
 
 ## Introduction
 
