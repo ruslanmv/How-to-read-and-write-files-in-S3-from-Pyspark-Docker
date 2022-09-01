@@ -4,15 +4,11 @@
 
 
 
-## How to read files from S3 buckets with Pyspark in a Docker Container
+# How to read and write files from S3 buckets with Pyspark in a Docker Container
 
 Hello everyone, today we are going  create a custom Docker Container with **JupyterLab**  with **Pyspark**  that will read files from **AWS S3**
 
-Moreover we are going to analyze some **stocks prices** data of Google, Amazon and Tesla in a **S3** with **Pyspark.**
-
-
-
-
+Moreover we are going to analyze some **Stocks prices** data of Google, Amazon and Tesla in a **S3** with **Pyspark.**
 
 ## Introduction
 
@@ -51,7 +47,7 @@ docker run -p 8888:8888 ruslanmv/pyspark-aws:3.1.2
 
    ![image-20220831224818375](assets/images/posts/README/image-20220831224818375.png)
 
-7.  Replace BUCKET_NAME with the  name of your need
+7.  If you want read the files in you bucket, replace BUCKET_NAME 
 
    ```python
    import boto3
@@ -65,9 +61,13 @@ docker run -p 8888:8888 ruslanmv/pyspark-aws:3.1.2
 
    
 
-Let us explain a little more how to  
+Good !,  you have seen how simple is read the files inside a S3 bucket within  boto3. 
+
+In the following sections  I will explain in more details how to create this container and how to read an write by using this container.
 
 
+
+# Getting started with pyspark-aws container
 
 
 
@@ -77,21 +77,19 @@ If you are in Linux, using Ubuntu, you can create an script file called **instal
 
 <script src="https://gist.github.com/ruslanmv/511d96c2d9cc2dd3b68a67490bcf9aad.js"></script>
 
-This script is compatible with any EC2 instance with Ubuntu 22.04 LSTM, then just type `sh install_docker.sh` in the terminal.
+This script is compatible with any EC2 instance with **Ubuntu 22.04 LSTM,** then just type `sh install_docker.sh` in the terminal.
 
 ![image-20220831205814471](assets/images/posts/README/image-20220831205814471.png)
 
 
 
-If you are using Windows, for example in your Laptop, You can install the docker Desktop
+If you are using **Windows 10/11**, for example in your Laptop, You can install the docker Desktop
 
 [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
 
 
 
 ## Step 2 Creation of the  Container
-
-
 
 If you want create your own Docker Container you can create  [Dockerfile ](https://gist.github.com/ruslanmv/9518aa1113c48a9002266f7bd3b012a0#file-dockerfile)  and [requirements.txt ](https://gist.github.com/ruslanmv/9518aa1113c48a9002266f7bd3b012a0#file-requirements-txt) with the following:
 
