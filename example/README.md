@@ -1,8 +1,16 @@
 # Read and Write files from S3 with  Pyspark Container
 
+
+
+![](assets/images/posts/README/intro.gif)
+
+
+
+
+
 ## Step 1 Geeting the AWS credentials
 
-A simple way but without the envirooment you can use
+A simple way but without the environment you can use
 
 
 ```python
@@ -68,7 +76,7 @@ spark = SparkSession \
     Setting default log level to "WARN".
     To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
     22/09/01 14:38:39 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
-    
+
 
 
 ```python
@@ -108,8 +116,9 @@ sc._jsc.hadoopConfiguration().set("fs.s3.impl", "org.apache.hadoop.fs.s3.S3FileS
     AMZN.csv.4          100%[===================>]  19.56K  --.-KB/s    in 0.003s  
     
     2022-09-01 14:38:46 (6.42 MB/s) - ‘AMZN.csv.4’ saved [20032/20032]
-    
-    
+
+
+​    
 
 ## Step 3 Read the dataset present on local system
 
@@ -129,8 +138,9 @@ df_AMZN.show(5)
     |2020-02-14|2155.679932|2159.040039|2125.889893|2134.870117|2134.870117|2606200|
     +----------+-----------+-----------+-----------+-----------+-----------+-------+
     only showing top 5 rows
-    
-    
+
+
+​    
 
 ## Step 4 Creation of the S3 Bucket
 
@@ -161,7 +171,7 @@ s3.create_bucket(Bucket=my_new_bucket)
 ```
 
     2022-08-31 21:59:41 stock-prices-pyspark
-    
+
 
 ## Step 5. Write PySpark Dataframe to AWS S3 Bucket
 
@@ -173,7 +183,8 @@ df_AMZN.write.format('csv').option('header','true').save('s3a://stock-prices-pys
     22/09/01 14:39:02 WARN MetricsConfig: Cannot locate configuration: tried hadoop-metrics2-s3a-file-system.properties,hadoop-metrics2.properties
     22/09/01 14:39:06 WARN AbstractS3ACommitterFactory: Using standard FileOutputCommitter to commit work. This is slow and potentially unsafe.
     22/09/01 14:39:08 WARN AbstractS3ACommitterFactory: Using standard FileOutputCommitter to commit work. This is slow and potentially unsafe.
-                                                                                    
+
+
 
 ## Step 6. Read Data from AWS S3 into PySpark Dataframe
 
@@ -183,7 +194,8 @@ s3_df=spark.read.csv("s3a://stock-prices-pyspark/csv/AMZN.csv",header=True,infer
 s3_df.show(5)
 ```
 
-                                                                                    
+​                                                                                    
+
 
     +----------+-----------+-----------+-----------+-----------+-----------+-------+
     |      Date|       Open|       High|        Low|      Close|  Adj Close| Volume|
@@ -195,8 +207,9 @@ s3_df.show(5)
     |2020-02-14|2155.679932|2159.040039|2125.889893|2134.870117|2134.870117|2606200|
     +----------+-----------+-----------+-----------+-----------+-----------+-------+
     only showing top 5 rows
-    
-    
+
+
+​    
 
 ## Step 7.  Read the files in the Bucket
 
@@ -215,7 +228,7 @@ for file in my_bucket.objects.all():
     /csv/GOOG.csv
     csv/AMZN.csv/_SUCCESS
     csv/AMZN.csv/part-00000-2f15d0e6-376c-4e19-bbfb-5147235b02c7-c000.csv
-    
+
 
 ## Step 8. Read Data from AWS S3 with boto3
 If you dont need use Pyspark also you can read
@@ -250,7 +263,7 @@ df.head()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -362,7 +375,7 @@ s3.meta.client.upload_file('GOOG.csv', bucket, 'csv/'+'GOOG.csv')
     2022-08-03 19:50:23 sagemaker-studio-342527032693-bas5sukiu4c
     2022-08-31 21:59:41 stock-prices-pyspark
     2022-08-31 21:22:06 stock-prices-spark
-    
+
 
 
 ```python
